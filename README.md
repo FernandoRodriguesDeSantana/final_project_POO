@@ -2,13 +2,14 @@
      width="30%"
      style="padding: 10px">
 
-# << Título do projeto >>
+# << Sistema de Monitoramento de Pacientes Hospitalares >>
 
-## << Descrição breve do domínio do problema >>
+## << Hospitais e unidades de saúde frequentemente enfrentam desafios no acompanhamento contínuo e preciso das condições clínicas de seus pacientes. O domínio deste sistema envolve o monitoramento em tempo real de sinais vitais, o gerenciamento de alas hospitalares, e o cadastro de pacientes, com acesso restrito a profissionais de saúde autorizados. O sistema proposto visa digitalizar esses processos, proporcionando uma interface centralizada para que os profissionais possam autenticar-se, registrar pacientes, alocar leitos e visualizar sinais vitais, facilitando decisões médicas mais rápidas e eficazes. >>
+
 
 > Repositório destinado para o desenvolvimento do projeto final da discipliana PRG22107 - Programação orienta a objeto. 
 > 
-> Aluno: Nome do aluno  
+> Aluno: Fernando R. de Santana
 > Professor: Hugo Marcondes
 
 <p align=center><strong>SUMÁRIO</strong></p>
