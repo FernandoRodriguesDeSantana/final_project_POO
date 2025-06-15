@@ -9,12 +9,11 @@ O sistema tem como foco o apoio à rotina hospitalar, melhorando o controle e o 
 
 ## Diagrama de Casos de Uso
 
-![image](https://github.com/user-attachments/assets/dd03faee-3ace-4592-b6fe-d02178b91f7d)
-
+![image](https://github.com/user-attachments/assets/a379aafe-b779-497c-a48c-ce0d1814f4cc)
  
 ## Diagrama de Domínio do problema
 
-![image](https://github.com/user-attachments/assets/478c5b07-b42d-4e2e-9d66-839b2fcd48b0)
+![image](https://github.com/user-attachments/assets/24a59c7e-271c-4bb9-b075-974e1eb5ee68)
 
 <div align="center">
 
