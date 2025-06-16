@@ -10,12 +10,12 @@ O sistema tem como foco o apoio à rotina hospitalar, melhorando o controle e o 
 ## Requisitos Funcionais do Projeto
 
 - Cadastrar pacientes
+- Associar paciente a uma ala
+- Atualizar informações de pacientes
 - Monitorar sinais vitais de pacientes individualmente
 - Monitorar sinais vitais de uma ala
-- Atualizar informações de pacientes
-- Autenticar profissional da saúde
 - Gerar alertas em tempo real
-- Associar paciente a uma ala
+- Autenticar profissional da saúde
 
 ## Diagrama de Casos de Uso
 
