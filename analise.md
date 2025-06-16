@@ -7,6 +7,16 @@
 Em ambientes hospitalares, o acompanhamento dos sinais vitais dos pacientes é essencial para a tomada de decisões clínicas eficazes. O processo tradicional, muitas vezes feito de forma manual ou com sistemas isolados, pode levar a atrasos, falhas de registro e dificuldade no acesso às informações em tempo real. Este projeto propõe um sistema digital integrado de monitoramento de pacientes, que permite que profissionais de saúde realizem cadastro de pacientes, atribuição de leitos, monitoramento individual ou por ala e visualização de sinais vitais de forma centralizada, rápida e segura.
 O sistema tem como foco o apoio à rotina hospitalar, melhorando o controle e o acompanhamento clínico, com acesso autenticado e visualização intuitiva.
 
+## Requisitos Funcionais do Projeto
+
+- Cadastrar pacientes
+- Monitorar sinais vitais de pacientes individualmente
+- Monitorar sinais vitais de uma ala
+- Atualizar informações de pacientes
+- Autenticar profissional da saúde
+- Gerar alertas em tempo real
+- Associar paciente a uma ala
+
 ## Diagrama de Casos de Uso
 
 ![image](https://github.com/user-attachments/assets/bf7b7163-e45e-41a5-91be-693ead7c36fe)
