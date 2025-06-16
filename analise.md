@@ -18,10 +18,12 @@ O sistema tem como foco o apoio à rotina hospitalar, melhorando o controle e o 
 - Autenticar profissional da saúde
 
 ## Diagrama de Casos de Uso
+O sistema de monitoramento de pacientes permite a interação principal dos profissionais da saúde (como médicos e enfermeiros), que acessam o sistema para realizar ações relacionadas aos pacientes e seus sinais vitais. Os casos de uso identificados são:
 
 ![image](https://github.com/user-attachments/assets/bf7b7163-e45e-41a5-91be-693ead7c36fe)
  
 ## Diagrama de Domínio do problema
+O sistema é modelado com base em conceitos da orientação a objetos. As principais classes são:
 
 ![image](https://github.com/user-attachments/assets/3fe5c97d-00f5-4f11-939e-7c89155b125a)
 
