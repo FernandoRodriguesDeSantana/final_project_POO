@@ -20,12 +20,17 @@ O sistema tem como foco o apoio à rotina hospitalar, melhorando o controle e o 
 ## Diagrama de Casos de Uso
 O sistema de monitoramento de pacientes permite a interação principal dos profissionais da saúde (como médicos e enfermeiros), que acessam o sistema para realizar ações relacionadas aos pacientes e seus sinais vitais. Os casos de uso identificados são:
 
-![image](https://github.com/user-attachments/assets/bf7b7163-e45e-41a5-91be-693ead7c36fe)
+![image](https://github.com/user-attachments/assets/3d4666ce-8c84-4e48-9501-1b4a8dfd35a0)
  
 ## Diagrama de Domínio do problema
 O sistema é modelado com base em conceitos da orientação a objetos. As principais classes são:
 
-![image](https://github.com/user-attachments/assets/3fe5c97d-00f5-4f11-939e-7c89155b125a)
+![image](https://github.com/user-attachments/assets/42984018-bd5b-4568-9cb0-1b583d46fdd2)
+
+## Diagrama de Sequências
+Esse diagrama mostra como o sistema recupera os sinais vitais dos pacientes de uma ala específica e apresenta essas informações ao profissional de saúde, destacando o fluxo de chamadas entre os objetos e a ordem temporal dessas interações.
+
+![image](https://github.com/user-attachments/assets/3581568f-8e86-45ba-abe1-e5ae30b09435)
 
 <div align="center">
 
