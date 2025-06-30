@@ -17,12 +17,6 @@ set(PROJECT_SOURCES
         main.cpp
         main.h
         main.ui
-)
-
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(monitoringVitalSigns
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
         Person.h
         Person.cpp
         Patient.h
@@ -31,6 +25,14 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         HealthProfessional.cpp
         HospitalWing.h
         HospitalWing.cpp
+        VitalSign.h
+        VitalSign.cpp
+)
+
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(monitoringVitalSigns
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET monitoringVitalSigns APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

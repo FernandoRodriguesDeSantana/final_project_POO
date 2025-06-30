@@ -3,7 +3,7 @@
 
 #include <string>
 
-class Person{
+class Person {
 public:
     // Class builder
     Person(const std::string& name, int age, char sex);

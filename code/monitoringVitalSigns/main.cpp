@@ -1,5 +1,5 @@
 #include "main.h"
-#include "ui_main.h" // importante: inclui a interface gerada
+#include "ui_main.h" // inclui o arquivo gerado pelo Qt Designer
 
 Main::Main(QWidget *parent)
     : QMainWindow(parent)
@@ -10,9 +10,10 @@ Main::Main(QWidget *parent)
 
 Main::~Main()
 {
-    delete ui; // libera memória alocada com new
+    delete ui; // desaloca a memória da UI
 }
 
+// Função principal com os argumentos corretos
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
