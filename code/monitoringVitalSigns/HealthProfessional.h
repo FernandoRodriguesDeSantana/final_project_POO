@@ -6,7 +6,7 @@
 class HealthProfessional : public Person {
 public:
     // Builder
-    HealthProfessional(const std::string& name, int age, char sex, const std::string& id, const std::string jobPosition);
+    HealthProfessional(const std::string& name, int age, char sex, const std::string& id, const std::string& jobPosition);
 
     // Getters
     std::string getId() const;

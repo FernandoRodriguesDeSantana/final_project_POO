@@ -338,6 +338,12 @@
 			null
 		],
 		[
+			"C:/Users/fre/Documents/POO Project/monitoringVitalSigns/HospitalWing.h",
+			"MU",
+			"EWIEGA46WW/moc_HospitalWing.cpp",
+			null
+		],
+		[
 			"C:/Users/fre/Documents/POO Project/monitoringVitalSigns/Patient.h",
 			"MU",
 			"EWIEGA46WW/moc_Patient.cpp",
@@ -429,6 +435,11 @@
 	[
 		[
 			"C:/Users/fre/Documents/POO Project/monitoringVitalSigns/HealthProfessional.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/fre/Documents/POO Project/monitoringVitalSigns/HospitalWing.cpp",
 			"MU",
 			null
 		],

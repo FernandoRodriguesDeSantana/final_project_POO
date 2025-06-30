@@ -574,6 +574,9 @@ monitoringVitalSigns_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/CMakeLists.txt \
+	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/HealthProfessional.cpp \
+	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/HealthProfessional.h \
+	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/Patient.cpp \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/Patient.h \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/Person.cpp \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/Person.h \
@@ -582,6 +585,8 @@ monitoringVitalSigns_autogen/timestamp: \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/monitoringVitalSigns_autogen/moc_predefs.h \
+	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/hospitalWing.cpp \
+	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/hospitalWing.h \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/main.cpp \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/main.h \
 	C:/Users/fre/Documents/POO\ Project/monitoringVitalSigns/main.ui \

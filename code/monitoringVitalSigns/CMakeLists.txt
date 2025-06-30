@@ -29,6 +29,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Patient.cpp
         HealthProfessional.h
         HealthProfessional.cpp
+        HospitalWing.h
+        HospitalWing.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET monitoringVitalSigns APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

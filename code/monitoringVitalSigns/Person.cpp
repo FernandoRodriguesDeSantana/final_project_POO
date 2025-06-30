@@ -5,25 +5,25 @@ Person::Person(const std::string& name, int age, char sex) : name(name), age(age
 
 
 // Getters
-std::string Person::getName() const{
+std::string Person::getName() const {
     return name;
 }
 
-int Person::getAge(){
+int Person::getAge() {
     return age;
 }
 
-char Person::getSex(){
+char Person::getSex() {
     return sex;
 }
 
 
 // Setters
-void Person::setName(const std::string& name){
+void Person::setName(const std::string& name) {
     this->name = name;
 }
 
-void Person::setAge(int age){
+void Person::setAge(int age) {
     this->age = age;
 }
 
