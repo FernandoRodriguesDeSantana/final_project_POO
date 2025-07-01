@@ -1,5 +1,5 @@
-#ifndef SINALVITAL_H
-#define SINALVITAL_H
+#ifndef VITALSIGN_H
+#define VITALSIGN_H
 
 #include <string>
 
@@ -27,4 +27,4 @@ private:
     std::string dataTime;
 };
 
-#endif // SINALVITAL_H
+#endif // VITALSIGN_H

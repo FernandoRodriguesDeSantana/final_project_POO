@@ -29,6 +29,7 @@ SOURCES += \
         hospitalwing.cpp \
         main.cpp \
         mainwindow.cpp \
+        monitoringsystem.cpp \
         patient.cpp \
         person.cpp \
         vitalsign.cpp
@@ -37,6 +38,7 @@ HEADERS += \
         healthprofessional.h \
         hospitalwing.h \
         mainwindow.h \
+        monitoringsystem.h \
         patient.h \
         person.h \
         vitalsign.h
