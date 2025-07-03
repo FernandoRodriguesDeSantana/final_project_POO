@@ -25,7 +25,7 @@ O sistema de monitoramento de pacientes permite a interação principal dos prof
 ## Diagrama de Domínio do problema
 O sistema é modelado com base em conceitos da orientação a objetos. As principais classes são:
 
-![image](https://github.com/user-attachments/assets/42984018-bd5b-4568-9cb0-1b583d46fdd2)
+![Classe UML](https://github.com/user-attachments/assets/5c209036-811e-4433-98f7-ca178a8ab6fa)
 
 ## Diagrama de Sequências
 Esse diagrama mostra como o sistema recupera os sinais vitais dos pacientes de uma ala específica e apresenta essas informações ao profissional de saúde, destacando o fluxo de chamadas entre os objetos e a ordem temporal dessas interações.
