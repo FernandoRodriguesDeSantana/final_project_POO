@@ -21,9 +21,6 @@ public:
     QDateTime getDateTime() const;
     QString toString() const; // Adicionado para facilitar o debug
 
-    // Método agora retorna um ponteiro (VitalSign*)
-    static VitalSign* randomGeneration();
-
 private:
     float m_heartRate;
     float m_systolicPressure;
