@@ -1,5 +1,7 @@
 #include "monitoringsystem.h"
 #include <QtAlgorithms>
+#include "healthprofessional.h"
+#include "patient.h"
 
 MonitoringSystem::MonitoringSystem(QObject *parent)
     : QObject(parent), m_authenticatedUser(nullptr)
@@ -50,4 +52,21 @@ bool MonitoringSystem::login(const QString& id)
         }
     }
     return false;
+}
+
+void MonitoringSystem::setupInitialData()
+{
+    // Criar profissionais e adicioná-los ao sistema
+    auto* drHouse = new HealthProfessional("Gregory House", 59, 'M', "111", "Infectologista", this);
+    addUser(drHouse);
+
+    // Criar alas
+    auto* uci = new HospitalWing("UTI", drHouse, 10, this);
+    addWing(uci);
+
+    // Criar pacientes e adicioná-los diretamente à ala
+    uci->addPatient(new Patient("John Doe", 45, 'M', 101, "Desconhecido", uci));
+    uci->addPatient(new Patient("Jane Smith", 62, 'F', 102, "Pneumonia", uci));
+    uci->addPatient(new Patient("Peter Jones", 75, 'M', 103, "Infarto", uci));
+    uci->addPatient(new Patient("Mary Williams", 55, 'F', 104, "Pós-operatório", uci));
 }

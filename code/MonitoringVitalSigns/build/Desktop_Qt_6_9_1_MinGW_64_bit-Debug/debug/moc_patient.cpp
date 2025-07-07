@@ -43,13 +43,14 @@ template <> constexpr inline auto Patient::qt_create_metaobjectdata<qt_meta_tag_
         "",
         "heartRate",
         "systolicPressure",
+        "diastolicPressure",
         "o2sat"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'vitalSignUpdated'
-        QtMocHelpers::SignalData<void(float, float, float)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Float, 3 }, { QMetaType::Float, 4 }, { QMetaType::Float, 5 },
+        QtMocHelpers::SignalData<void(float, float, float, float)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Float, 3 }, { QMetaType::Float, 4 }, { QMetaType::Float, 5 }, { QMetaType::Float, 6 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -74,12 +75,12 @@ void Patient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     auto *_t = static_cast<Patient *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->vitalSignUpdated((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3]))); break;
+        case 0: _t->vitalSignUpdated((*reinterpret_cast< std::add_pointer_t<float>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[4]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (Patient::*)(float , float , float )>(_a, &Patient::vitalSignUpdated, 0))
+        if (QtMocHelpers::indexOfMethod<void (Patient::*)(float , float , float , float )>(_a, &Patient::vitalSignUpdated, 0))
             return;
     }
 }
@@ -116,8 +117,8 @@ int Patient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Patient::vitalSignUpdated(float _t1, float _t2, float _t3)
+void Patient::vitalSignUpdated(float _t1, float _t2, float _t3, float _t4)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3);
+    QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1, _t2, _t3, _t4);
 }
 QT_WARNING_POP

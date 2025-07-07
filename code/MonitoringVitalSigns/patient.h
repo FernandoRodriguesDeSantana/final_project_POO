@@ -19,11 +19,11 @@ public:
     QString getDiagnosis() const;
 
 signals:
-    void vitalSignUpdated(float heartRate, float systolicPressure, float o2sat);
+    void vitalSignUpdated(float heartRate, float systolicPressure, float diastolicPressure, float o2sat);
 
 private:
     int m_room;
-    QString m_diagnosis; // MUDANÇA: Movido para private
+    QString m_diagnosis;
     QList<VitalSign*> m_vitalSigns;
 };
 #endif // PATIENT_H

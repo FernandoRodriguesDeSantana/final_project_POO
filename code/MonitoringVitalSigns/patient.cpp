@@ -15,7 +15,7 @@ QString Patient::getDiagnosis() const { return m_diagnosis; }
 
 void Patient::addVitalSign(VitalSign* sign) {
     if (sign) {
-        sign->setParent(this); // MUDANÇA: Garante que o Qt gerencie a memória
+        sign->setParent(this);
         m_vitalSigns.append(sign);
     }
 }
@@ -24,7 +24,6 @@ const QList<VitalSign*>& Patient::getVitalSigns() const {
     return m_vitalSigns;
 }
 
-// MUDANÇA: Implementação do método que faltava
 void Patient::generateAndUpdateVitalSign() {
     VitalSign* newSign = VitalSign::randomGeneration();
     this->addVitalSign(newSign);
@@ -34,6 +33,7 @@ void Patient::generateAndUpdateVitalSign() {
     emit vitalSignUpdated(
         newSign->getHeartRate(),
         newSign->getSystolicPressure(),
+        newSign->getDiastolicPressure(),
         newSign->getOxygenSaturation()
         );
 }

@@ -15,6 +15,7 @@ SOURCES += \
     mainwindow.cpp \
     monitoringsystem.cpp \
     patient.cpp \
+    patientmonitorwidget.cpp \
     person.cpp \
     vitalsign.cpp
 
@@ -24,11 +25,13 @@ HEADERS += \
     mainwindow.h \
     monitoringsystem.h \
     patient.h \
+    patientmonitorwidget.h \
     person.h \
     vitalsign.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    patientmonitorwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

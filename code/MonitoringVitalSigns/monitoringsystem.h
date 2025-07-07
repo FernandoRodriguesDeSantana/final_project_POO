@@ -19,6 +19,7 @@ public:
     bool login(const QString& id);
     HospitalWing* findWingByName(const QString& name);
     const QList<HospitalWing*>& getWings() const;
+    void setupInitialData();
 
 private:
     // Composition Relationship: The System "owns" the Wings and Users

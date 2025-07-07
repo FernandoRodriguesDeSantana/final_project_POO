@@ -22,6 +22,6 @@ private:
     QString m_name;
     HealthProfessional* m_responsible;
     int m_capacity;
-    QList<Patient*> m_patients; // MUDANÇA: Lista de ponteiros
+    QList<Patient*> m_patients;
 };
 #endif // HOSPITALWING_H

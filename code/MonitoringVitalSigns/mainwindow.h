@@ -3,11 +3,9 @@
 
 #include <QMainWindow>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
-QT_END_NAMESPACE
+namespace Ui { class MainWindow; }
+class QTimer;
+class MonitoringSystem;
 
 class MainWindow : public QMainWindow
 {
@@ -17,7 +15,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void simulateHospitalTick();
+
 private:
+    void setupMonitoringPanel();
+
     Ui::MainWindow *ui;
+    QTimer *m_simulationTimer;
+    MonitoringSystem* m_system;
 };
 #endif // MAINWINDOW_H
