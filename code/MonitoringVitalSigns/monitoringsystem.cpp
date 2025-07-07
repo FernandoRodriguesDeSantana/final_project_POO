@@ -1,16 +1,12 @@
 #include "monitoringsystem.h"
-#include <QtAlgorithms> // To use qDeleteAll
+#include <QtAlgorithms>
 
 MonitoringSystem::MonitoringSystem(QObject *parent)
     : QObject(parent), m_authenticatedUser(nullptr)
-{
-    // Constructor is ready to have wings and users added.
-}
+{}
 
-// The destructor ensures there are no memory leaks.
 MonitoringSystem::~MonitoringSystem()
 {
-    // qDeleteAll is a Qt utility function that iterates over the list and calls 'delete' on each pointer.
     qDeleteAll(m_wings);
     qDeleteAll(m_users);
 }

@@ -1,0 +1,15 @@
+release/healthprofessional.o
+release/hospitalwing.o
+release/main.o
+release/mainwindow.o
+release/monitoringsystem.o
+release/patient.o
+release/person.o
+release/vitalsign.o
+release/moc_healthprofessional.o
+release/moc_hospitalwing.o
+release/moc_mainwindow.o
+release/moc_monitoringsystem.o
+release/moc_patient.o
+release/moc_person.o
+release/moc_vitalsign.o

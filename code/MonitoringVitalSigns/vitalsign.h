@@ -1,11 +1,16 @@
 #ifndef VITALSIGN_H
 #define VITALSIGN_H
 
-#include <string>
+#include <QObject>
+#include <QDateTime>
+#include <QString>
 
-class VitalSign {
+class VitalSign : public QObject { // Herda de QObject
+    Q_OBJECT
+
 public:
-    VitalSign(float heartRate, float systolicPressure, float diastolicPressure, float bodyTemperature, float oxygenSaturation, const std::string& dataTime);
+    // Construtor agora aceita QObject* parent
+    VitalSign(float heartRate, float sys, float dia, float temp, float o2, const QDateTime& dateTime, QObject *parent = nullptr);
 
     // Getters
     float getHeartRate() const;
@@ -13,18 +18,19 @@ public:
     float getDiastolicPressure() const;
     float getBodyTemperature() const;
     float getOxygenSaturation() const;
-    std::string getDataTime() const;
+    QDateTime getDateTime() const;
+    QString toString() const; // Adicionado para facilitar o debug
 
-    // Método estático para gerar sinais aleatórios
-    static VitalSign randomGeneration();
+    // Método agora retorna um ponteiro (VitalSign*)
+    static VitalSign* randomGeneration();
 
 private:
-    float heartRate;
-    float systolicPressure;
-    float diastolicPressure;
-    float bodyTemperature;
-    float oxygenSaturation;
-    std::string dataTime;
+    float m_heartRate;
+    float m_systolicPressure;
+    float m_diastolicPressure;
+    float m_bodyTemperature;
+    float m_oxygenSaturation;
+    QDateTime m_dateTime;
 };
 
 #endif // VITALSIGN_H

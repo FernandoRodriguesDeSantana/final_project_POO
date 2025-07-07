@@ -1,25 +1,29 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
-#include "Person.h"
-#include <string>
+#include "person.h"
+#include <QList>
+
+class VitalSign;
 
 class Patient : public Person {
+    Q_OBJECT
 public:
-    // Builder
-    Patient(const std::string& name, int age, char sex, int room, std::string& diagnosis);
+    Patient(const QString& name, int age, char sex, int room, const QString& diagnosis, QObject *parent = nullptr);
+    ~Patient();
 
-    // Getters
-    int getRoom();
-    std::string getDiagnosis() const;
+    void addVitalSign(VitalSign* sign);
+    const QList<VitalSign*>& getVitalSigns() const;
+    void generateAndUpdateVitalSign();
+    int getRoom() const;
+    QString getDiagnosis() const;
 
-    // Setters
-    void setRoom(int room);
-    void setDiagnosis(const std::string& diagnosis);
+signals:
+    void vitalSignUpdated(float heartRate, float systolicPressure, float o2sat);
 
 private:
-    int room;
-    std::string diagnosis;
+    int m_room;
+    QString m_diagnosis; // MUDANÇA: Movido para private
+    QList<VitalSign*> m_vitalSigns;
 };
-
 #endif // PATIENT_H

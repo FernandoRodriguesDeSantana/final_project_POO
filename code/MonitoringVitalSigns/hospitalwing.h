@@ -1,32 +1,27 @@
 #ifndef HOSPITALWING_H
 #define HOSPITALWING_H
 
-#include <string>
-#include <vector>
-#include "Patient.h"
-#include "HealthProfessional.h"
+#include <QObject>
+#include <QString>
+#include <QList>
 
-class HospitalWing {
+class Patient;
+class HealthProfessional;
+
+class HospitalWing : public QObject {
+    Q_OBJECT
 public:
-    // Builder
-    HospitalWing(const std::string& name, const HealthProfessional& responsible, int capacity);
+    HospitalWing(const QString& name, HealthProfessional* responsible, int capacity, QObject *parent = nullptr);
+    ~HospitalWing();
 
-    // Getters
-    std::string getName() const;
-    HealthProfessional getResponsible() const;
-    int getCapacity();
-    std::vector<Patient> getPatients() const;
-
-    // Setters
-    void setName(const std::string& name);
-    void setResponsible(const HealthProfessional& responsible);
-    void setCapacity(int capacity);
+    void addPatient(Patient* patient);
+    QString getName() const;
+    const QList<Patient*>& getPatients() const;
 
 private:
-    std::string name;
-    HealthProfessional responsible;
-    int capacity;
-    std::vector<Patient> patients;
+    QString m_name;
+    HealthProfessional* m_responsible;
+    int m_capacity;
+    QList<Patient*> m_patients; // MUDANÇA: Lista de ponteiros
 };
-
 #endif // HOSPITALWING_H

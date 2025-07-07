@@ -1,39 +1,24 @@
 #include "VitalSign.h"
 #include <cstdlib>
 #include <ctime>
-#include <sstream>
-#include <iomanip>
 
-// Builder
-VitalSign::VitalSign(float heartRate, float systolicPressure, float diastolicPressure, float bodyTemperature, float oxygenSaturation, const std::string& dataTime) : heartRate(heartRate), systolicPressure(systolicPressure), diastolicPressure(diastolicPressure), bodyTemperature(bodyTemperature), oxygenSaturation(oxygenSaturation), dataTime(dataTime) {};
+VitalSign::VitalSign(float heartRate, float sys, float dia, float temp, float o2, const QDateTime& dateTime, QObject *parent)
+    : QObject(parent), m_heartRate(heartRate), m_systolicPressure(sys), m_diastolicPressure(dia),
+    m_bodyTemperature(temp), m_oxygenSaturation(o2), m_dateTime(dateTime) {}
 
-// Getters
-float VitalSign::getHeartRate() const {
-    return heartRate;
+// Getters...
+float VitalSign::getHeartRate() const { return m_heartRate; }
+float VitalSign::getSystolicPressure() const { return m_systolicPressure; }
+float VitalSign::getDiastolicPressure() const { return m_diastolicPressure; }
+float VitalSign::getBodyTemperature() const { return m_bodyTemperature; }
+float VitalSign::getOxygenSaturation() const { return m_oxygenSaturation; }
+QDateTime VitalSign::getDateTime() const { return m_dateTime; }
+
+QString VitalSign::toString() const {
+    return QString("HR: %1, BP: %2/%3, SpO2: %4").arg(m_heartRate).arg(m_systolicPressure).arg(m_diastolicPressure).arg(m_oxygenSaturation);
 }
 
-float VitalSign::getSystolicPressure() const {
-    return systolicPressure;
-}
-
-float VitalSign::getDiastolicPressure() const {
-    return diastolicPressure;
-}
-
-float VitalSign::getBodyTemperature() const {
-    return bodyTemperature;
-}
-
-float VitalSign::getOxygenSaturation() const {
-    return oxygenSaturation;
-}
-
-std::string VitalSign::getDataTime() const {
-    return dataTime;
-}
-
-
-VitalSign VitalSign::randomGeneration() {
+VitalSign* VitalSign::randomGeneration() {
     static bool started = false;
     if (!started) {
         std::srand(static_cast<unsigned int>(std::time(nullptr)));
@@ -50,8 +35,7 @@ VitalSign VitalSign::randomGeneration() {
     float temp = generate(36.0f, 37.5f);
     float sat = generate(95.0f, 100.0f);
 
-    std::ostringstream dataTime;
-    dataTime << "30/06/2025 14:" << std::setw(2) << std::setfill('0') << (rand() % 60);
+    QDateTime currentTime = QDateTime::currentDateTime();
 
-    return VitalSign(bpm, sys, dia, temp, sat, dataTime.str());
+    return new VitalSign(bpm, sys, dia, temp, sat, currentTime);
 }

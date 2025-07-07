@@ -1,24 +1,27 @@
 #ifndef HEALTHPROFESSIONAL_H
 #define HEALTHPROFESSIONAL_H
 #include "Person.h"
-#include <string>
+#include <QString>
+#include <QObject>
 
 class HealthProfessional : public Person {
+    Q_OBJECT;
+
 public:
     // Builder
-    HealthProfessional(const std::string& name, int age, char sex, const std::string& id, const std::string& jobPosition);
+    HealthProfessional(const QString& name, int age, char sex, const QString& id, const QString& jobPosition, QObject *parent = nullptr);
 
     // Getters
-    std::string getId() const;
-    std::string getJobPosition() const;
+    QString getId() const;
+    QString getJobPosition() const;
 
     // Setters
-    void setId(const std::string& id);
-    void setJobPosition(const std::string& jobPosition);
+    void setId(const QString& id);
+    void setJobPosition(const QString& jobPosition);
 
 private:
-    std::string id;
-    std::string jobPosition;
+    QString m_id;
+    QString m_jobPosition;
 };
 
 #endif // HEALTHPROFESSIONAL_H

@@ -1,27 +1,24 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include <string>
+#include <QObject>
+#include <QString>
 
-class Person {
+class Person : public QObject {
+    Q_OBJECT
+
 public:
-    // Class builder
-    Person(const std::string& name, int age, char sex);
+    Person(const QString& name, int age, char sex, QObject *parent = nullptr);
 
     // Getters
-    std::string getName() const;
-    int getAge();
-    char getSex();
-
-    // Setters
-    void setName(const std::string& name);
-    void setAge(int age);
-    void setSex(char sex);
+    QString getName() const;
+    int getAge() const;
+    char getSex() const;
 
 protected:
-    std::string name;
-    int age;
-    char sex;
+    QString m_name;
+    int m_age;
+    char m_sex;
 };
 
 #endif // PERSON_H
