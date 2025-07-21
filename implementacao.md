@@ -4,10 +4,6 @@
  Relatar o processo de implementação do problemas, incluindo as
  ferramentas e bibliotecas utilizadas
 >
-Com certeza. Transformar o relatório em um `README.md` para o GitHub é uma ótima ideia para apresentar seu projeto. Aqui está o conteúdo formatado em Markdown, pronto para ser copiado e colado.
-
------
-
 # Sistema de Monitoramento de Sinais Vitais
 
   
