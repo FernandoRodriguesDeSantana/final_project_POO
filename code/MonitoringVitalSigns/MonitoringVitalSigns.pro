@@ -15,6 +15,7 @@ hospitalwing.cpp \
 main.cpp \
 mainwindow.cpp \
 monitoringsystem.cpp \
+    newpatientdialog.cpp \
 patient.cpp \
 patientmonitorwidget.cpp \
 person.cpp \
@@ -26,6 +27,7 @@ hospitalwing.h \
     logindialog.h \
 mainwindow.h \
 monitoringsystem.h \
+    newpatientdialog.h \
 patient.h \
 patientmonitorwidget.h \
 person.h \
@@ -34,6 +36,7 @@ vitalsign.h
 FORMS += \
     logindialog.ui \
 mainwindow.ui \
+    newpatientdialog.ui \
 patientmonitorwidget.ui
 
 # Default rules for deployment.

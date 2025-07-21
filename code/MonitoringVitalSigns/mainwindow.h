@@ -17,6 +17,7 @@ public:
 
 private slots:
     void simulateHospitalTick();
+    void on_buttonNewPatient_clicked();
 
 private:
     void setupMonitoringPanel();
