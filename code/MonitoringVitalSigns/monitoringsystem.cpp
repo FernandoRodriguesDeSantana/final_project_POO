@@ -42,22 +42,24 @@ const QList<HospitalWing*>& MonitoringSystem::getWings() const
     return m_wings;
 }
 
-bool MonitoringSystem::login(const QString& id)
+bool MonitoringSystem::login(const QString& id, const QString& password)
 {
-    // Example logic to find a user and authenticate them
     for (HealthProfessional* user : m_users) {
-        if (user->getId() == id) { // Assuming HealthProfessional has a getId() method
-            m_authenticatedUser = user;
-            return true;
+        if (user->getId() == id) {
+            if (user->checkPassword(password)) {
+                m_authenticatedUser = user;
+                return true; // Login bem-sucedido!
+            }
         }
     }
-    return false;
+    m_authenticatedUser = nullptr;
+    return false; // Usuário não encontrado ou senha incorreta
 }
 
 void MonitoringSystem::setupInitialData()
 {
-    // Criar profissionais e adicioná-los ao sistema
-    auto* drHouse = new HealthProfessional("Gregory House", 59, 'M', "111", "Infectologista", this);
+    // Criar profissionais com senhas
+    auto* drHouse = new HealthProfessional("Gregory House", 59, 'M', "111", "Infectologista", "senha123", this);
     addUser(drHouse);
 
     // Criar alas

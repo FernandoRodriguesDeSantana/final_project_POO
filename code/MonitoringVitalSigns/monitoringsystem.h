@@ -16,7 +16,7 @@ public:
     void addWing(HospitalWing* wing);
     void addUser(HealthProfessional* user);
 
-    bool login(const QString& id);
+    bool login(const QString& id, const QString& password);
     HospitalWing* findWingByName(const QString& name);
     const QList<HospitalWing*>& getWings() const;
     void setupInitialData();

@@ -9,11 +9,12 @@ class HealthProfessional : public Person {
 
 public:
     // Builder
-    HealthProfessional(const QString& name, int age, char sex, const QString& id, const QString& jobPosition, QObject *parent = nullptr);
+    HealthProfessional(const QString& name, int age, char sex, const QString& id, const QString& jobPosition, const QString& password, QObject *parent = nullptr);
 
     // Getters
     QString getId() const;
     QString getJobPosition() const;
+    bool checkPassword(const QString& password) const;
 
     // Setters
     void setId(const QString& id);
@@ -22,6 +23,7 @@ public:
 private:
     QString m_id;
     QString m_jobPosition;
+    QString m_password;
 };
 
 #endif // HEALTHPROFESSIONAL_H
