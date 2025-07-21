@@ -11,23 +11,22 @@
 #include "patientmonitorwidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
+    : QMainWindow(parent),
+    ui(new Ui::MainWindow),
+    m_patientPanelLayout(nullptr) // MUDANÇA: Inicializar o ponteiro como nulo
 {
     ui->setupUi(this);
     this->setWindowTitle("Painel de Monitoramento de Sinais Vitais");
     this->resize(800, 600);
 
-    // 1. Cria e popula o sistema com dados de teste
     m_system = new MonitoringSystem(this);
     m_system->setupInitialData();
 
-    // 2. Monta a interface gráfica
     setupMonitoringPanel();
 
-    // 3. Inicia o "coração" da simulação
     m_simulationTimer = new QTimer(this);
     connect(m_simulationTimer, &QTimer::timeout, this, &MainWindow::simulateHospitalTick);
-    m_simulationTimer->start(5000); // Gera novos dados a cada 5 segundos
+    m_simulationTimer->start(5000);
     connect(ui->buttonNewPatient, &QPushButton::clicked, this, &MainWindow::on_buttonNewPatient_clicked);
 }
 
@@ -38,19 +37,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupMonitoringPanel()
 {
-    // Usa uma área de rolagem para o caso de haver muitos pacientes
-    QScrollArea *scrollArea = new QScrollArea(this);
-    scrollArea->setWidgetResizable(true);
-    QWidget *containerWidget = new QWidget();
-    // Damos um nome ao container para encontrá-lo depois
-    containerWidget->setObjectName("monitoringPanelContainer");
-    QGridLayout *layout = new QGridLayout(containerWidget);
-    scrollArea->setWidget(containerWidget);
-    // O centralwidget agora é o botão e a área de rolagem, então precisamos de um layout principal
+    // A lógica aqui estava criando um layout novo sobre o antigo.
+    // Vamos usar o layout do .ui para organizar os widgets.
     QVBoxLayout* mainLayout = new QVBoxLayout(ui->centralwidget);
-    mainLayout->addWidget(ui->buttonNewPatient); // Adiciona o botão no topo
-    mainLayout->addWidget(scrollArea); // Adiciona a área de rolagem abaixo
 
+    // Adiciona o botão e a área de rolagem (que já existem no .ui) ao layout
+    mainLayout->addWidget(ui->buttonNewPatient);
+    mainLayout->addWidget(ui->scrollArea);
+
+    // Configura o conteúdo da área de rolagem
+    ui->scrollArea->setWidgetResizable(true);
+    QWidget *containerWidget = new QWidget();
+    // MUDANÇA: Criamos o layout e o atribuímos ao nosso ponteiro de membro
+    m_patientPanelLayout = new QGridLayout(containerWidget);
+    ui->scrollArea->setWidget(containerWidget);
+
+    // O resto da função que preenche com os pacientes iniciais...
     HospitalWing* wingToDisplay = m_system->getWings().first();
     if (!wingToDisplay) return;
 
@@ -60,14 +62,14 @@ void MainWindow::setupMonitoringPanel()
     {
         PatientMonitorWidget *monitorWidget = new PatientMonitorWidget();
         monitorWidget->setPatientName(patient->getName());
-        layout->addWidget(monitorWidget, row, col);
+        // MUDANÇA: Usamos o ponteiro de membro para adicionar os widgets
+        m_patientPanelLayout->addWidget(monitorWidget, row, col);
 
         connect(patient, &Patient::vitalSignUpdated,
                 monitorWidget, &PatientMonitorWidget::updateDisplay);
 
-        // Avança a posição no grid para o próximo widget
         col++;
-        if (col >= 2) { // 2 painéis por linha
+        if (col >= 2) {
             col = 0;
             row++;
         }
@@ -85,48 +87,40 @@ void MainWindow::simulateHospitalTick()
     }
 }
 
-// Slot que abre o diálogo de registro
 void MainWindow::on_buttonNewPatient_clicked()
 {
     NewPatientDialog dialog(this);
-    // Abre o diálogo e para a execução aqui até que ele seja fechado
     if (dialog.exec() == QDialog::Accepted) {
-        // Se o usuário clicou em "OK", pegamos os dados
+        // ... (código que pega os dados do diálogo)
         QString name = dialog.getName();
         int age = dialog.getAge();
         char sex = dialog.getSex();
         int room = dialog.getRoom();
         QString diagnosis = dialog.getDiagnosis();
 
-        // Validação simples para não adicionar pacientes vazios
-        if (name.isEmpty() || age == 0) {
-            return;
-        }
+        if (name.isEmpty()) return;
 
-        // Pega a primeira ala para adicionar o paciente
         HospitalWing* wing = m_system->getWings().first();
         if (!wing) return;
 
-        // Cria o novo objeto Patient
         Patient* newPatient = new Patient(name, age, sex, room, diagnosis, wing);
-        // Adiciona o paciente à lógica da ala
         wing->addPatient(newPatient);
 
-        // ATUALIZAÇÃO DINÂMICA DA UI: Adiciona o widget do novo paciente à tela
-        // Supondo que o layout está no containerWidget dentro do scrollArea
-        QGridLayout* layout = qobject_cast<QGridLayout*>(ui->centralwidget->findChild<QWidget*>()->layout());
-        if (layout) {
-            int patientCount = layout->count();
-            int row = patientCount / 2; // Calcula a nova posição no grid
+        // MUDANÇA: Usamos o ponteiro de membro m_patientPanelLayout, que é garantido de existir
+        if (m_patientPanelLayout) {
+            int patientCount = m_patientPanelLayout->count();
+            int row = patientCount / 2;
             int col = patientCount % 2;
 
             PatientMonitorWidget *monitorWidget = new PatientMonitorWidget();
             monitorWidget->setPatientName(newPatient->getName());
-            layout->addWidget(monitorWidget, row, col);
+            m_patientPanelLayout->addWidget(monitorWidget, row, col);
 
-            // Conecta o sinal do novo paciente ao seu novo widget
             connect(newPatient, &Patient::vitalSignUpdated,
                     monitorWidget, &PatientMonitorWidget::updateDisplay);
+
+            // Força a primeira atualização
+            newPatient->generateAndUpdateVitalSign();
         }
     }
 }
