@@ -71,11 +71,6 @@ Uma decisão de design crucial foi o uso de **ponteiros** (ex: `QList<Patient*>`
       * **Usuário:** `111`
       * **Senha:** `senha123`
 
-## 🖼️ Screenshots
-
-**Tela de Login**
-
-**Painel de Monitoramento**
 <div align="center">
 
 [Retroceder](projeto.md) | [Início](analise.md)
