@@ -8,11 +8,11 @@
 
   
 
-## 📖 Visão Geral
+## Visão Geral
 
 Este projeto é uma aplicação de desktop desenvolvida em C++ com o framework Qt, que simula um painel de monitoramento de sinais vitais em tempo real para um ambiente hospitalar. O sistema permite a autenticação de usuários (profissionais de saúde), visualização de múltiplos pacientes, registro dinâmico de novos pacientes e uma simulação realista de sinais vitais com atualização automática na interface.
 
-## ✨ Funcionalidades Principais
+## Funcionalidades Principais
 
   * **Autenticação de Usuário:** Acesso ao sistema protegido por uma tela de login que valida o ID e a senha do profissional de saúde.
   * **Monitoramento em Tempo Real:** Painel centralizado que exibe os dados de múltiplos pacientes simultaneamente.
@@ -20,7 +20,7 @@ Este projeto é uma aplicação de desktop desenvolvida em C++ com o framework Q
   * **Adição Dinâmica de Pacientes:** O profissional autenticado pode registrar novos pacientes através de um formulário, e o painel de monitoramento é atualizado instantaneamente para incluir o novo paciente.
   * **Interface Gráfica Intuitiva:** A interface foi construída com componentes do Qt Widgets, organizados em layouts para uma experiência de usuário clara e funcional.
 
-## 🛠️ Ferramentas e Tecnologias
+## Ferramentas e Tecnologias
 
   * **IDE:** Qt Creator
   * **Linguagem:** C++
@@ -31,7 +31,7 @@ Este projeto é uma aplicação de desktop desenvolvida em C++ com o framework Q
   * **Ferramenta de Build:** qmake
   * **UI Designer:** Qt Designer
 
-## 🏛️ Arquitetura e Modelagem de Dados
+## Arquitetura e Modelagem de Dados
 
 A aplicação segue uma arquitetura **Orientada a Objetos**, com uma clara separação entre a lógica de negócio (modelo) e a interface gráfica (visão).
 
@@ -47,7 +47,7 @@ As principais classes do sistema são:
 
 Uma decisão de design crucial foi o uso de **ponteiros** (ex: `QList<Patient*>`) para gerenciar as relações entre os objetos. Isso garante a existência de uma única instância para cada paciente, evitando problemas de inconsistência de dados e melhorando a eficiência do sistema.
 
-## 🚀 Como Executar
+## Como Executar
 
 1.  **Pré-requisitos:**
 
