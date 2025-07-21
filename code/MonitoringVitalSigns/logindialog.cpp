@@ -1,7 +1,8 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
-#include <QPushButton> // Adicionar este include para acessar o botão
+#include <QPushButton>
 
+// Construtor do diálogo de login.
 LoginDialog::LoginDialog(MonitoringSystem* system, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog),
@@ -9,32 +10,37 @@ LoginDialog::LoginDialog(MonitoringSystem* system, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // MUDANÇA: Vamos nos conectar diretamente ao clique do botão OK.
-    // Isso nos dá controle total e evita o fechamento automático do diálogo.
+    // Pega um ponteiro para o botão "OK" da caixa de botões.
     QPushButton *okButton = ui->buttonBox->button(QDialogButtonBox::Ok);
+    // Conecta o clique do botão ao nosso slot de validação.
     connect(okButton, &QPushButton::clicked, this, &LoginDialog::on_loginButton_clicked);
 
-    // MUDANÇA: Desconectamos o sinal 'accepted' para garantir que ele não feche a janela sozinho.
+    // Desconecta o comportamento padrão do botão "OK" para impedir que ele feche
+    // o diálogo automaticamente antes da nossa validação.
     disconnect(ui->buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
 }
 
+// Destrutor.
 LoginDialog::~LoginDialog()
 {
     delete ui;
 }
 
+// Slot que executa a lógica de login quando o botão "OK" é clicado.
 void LoginDialog::on_loginButton_clicked()
 {
+    // Pega os dados dos campos de texto.
     QString id = ui->lineEditId->text();
     QString password = ui->lineEditPassword->text();
 
+    // Chama o método de login do sistema.
     if (m_system->login(id, password)) {
-        // Se o login for bem-sucedido, NÓS chamamos accept().
-        // Isso fecha a janela e retorna QDialog::Accepted.
+        // Se o login for válido, nós mesmos chamamos accept().
+        // Isso fecha o diálogo e retorna um resultado positivo (QDialog::Accepted).
         accept();
     } else {
-        // Se o login falhar, mostramos um erro e a janela permanece aberta,
-        // pois não estamos chamando accept() nem reject().
+        // Se o login for inválido, exibe uma mensagem de erro.
+        // O diálogo permanece aberto para uma nova tentativa.
         ui->errorLabel->setText("ID de usuário ou senha inválidos.");
         ui->lineEditPassword->clear();
     }

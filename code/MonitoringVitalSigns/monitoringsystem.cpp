@@ -2,17 +2,22 @@
 #include <QtAlgorithms>
 #include "healthprofessional.h"
 #include "patient.h"
+#include "monitoringsystem.h"
 
+// Construtor.
 MonitoringSystem::MonitoringSystem(QObject *parent)
     : QObject(parent), m_authenticatedUser(nullptr)
 {}
 
+// Destrutor que libera a memória das listas de alas e usuários.
 MonitoringSystem::~MonitoringSystem()
 {
+    // qDeleteAll é uma função do Qt que chama 'delete' em cada ponteiro da lista.
     qDeleteAll(m_wings);
     qDeleteAll(m_users);
 }
 
+// Adiciona uma nova ala à lista do sistema.
 void MonitoringSystem::addWing(HospitalWing* wing)
 {
     if (wing) {
@@ -20,6 +25,7 @@ void MonitoringSystem::addWing(HospitalWing* wing)
     }
 }
 
+// Adiciona um novo usuário (profissional de saúde) à lista do sistema.
 void MonitoringSystem::addUser(HealthProfessional* user)
 {
     if (user) {
@@ -27,48 +33,40 @@ void MonitoringSystem::addUser(HealthProfessional* user)
     }
 }
 
-HospitalWing* MonitoringSystem::findWingByName(const QString& name)
+// Valida as credenciais de um usuário.
+bool MonitoringSystem::login(const QString& id, const QString& password)
 {
-    for (HospitalWing* wing : m_wings) {
-        if (wing->getName() == name) { // Assuming HospitalWing has a getName() method
-            return wing;
+    // Procura o usuário pelo ID.
+    for (HealthProfessional* user : m_users) {
+        if (user->getId() == id) {
+            // Se o usuário for encontrado, verifica a senha.
+            if (user->checkPassword(password)) {
+                m_authenticatedUser = user; // Armazena o usuário autenticado.
+                return true; // Sucesso.
+            }
         }
     }
-    return nullptr; // Return null if not found
+    m_authenticatedUser = nullptr;
+    return false; // Falha (usuário não encontrado ou senha incorreta).
+}
+
+// Popula o sistema com dados de teste para a demonstração.
+void MonitoringSystem::setupInitialData()
+{
+    // Cria profissionais de saúde com senhas.
+    auto* drHouse = new HealthProfessional("Gregory House", 59, 'M', "111", "Infectologista", "senha123", this);
+    addUser(drHouse);
+
+    // Cria alas.
+    auto* uci = new HospitalWing("UTI", drHouse, 10, this);
+    addWing(uci);
+
+    // Cria pacientes e os adiciona à ala.
+    uci->addPatient(new Patient("John Doe", 45, 'M', 101, "Desconhecido", uci));
+    uci->addPatient(new Patient("Jane Smith", 62, 'F', 102, "Pneumonia", uci));
 }
 
 const QList<HospitalWing*>& MonitoringSystem::getWings() const
 {
     return m_wings;
-}
-
-bool MonitoringSystem::login(const QString& id, const QString& password)
-{
-    for (HealthProfessional* user : m_users) {
-        if (user->getId() == id) {
-            if (user->checkPassword(password)) {
-                m_authenticatedUser = user;
-                return true; // Login bem-sucedido!
-            }
-        }
-    }
-    m_authenticatedUser = nullptr;
-    return false; // Usuário não encontrado ou senha incorreta
-}
-
-void MonitoringSystem::setupInitialData()
-{
-    // Criar profissionais com senhas
-    auto* drHouse = new HealthProfessional("Gregory House", 59, 'M', "111", "Infectologista", "senha123", this);
-    addUser(drHouse);
-
-    // Criar alas
-    auto* uci = new HospitalWing("UTI", drHouse, 10, this);
-    addWing(uci);
-
-    // Criar pacientes e adicioná-los diretamente à ala
-    uci->addPatient(new Patient("John Doe", 45, 'M', 101, "Desconhecido", uci));
-    uci->addPatient(new Patient("Jane Smith", 62, 'F', 102, "Pneumonia", uci));
-    uci->addPatient(new Patient("Peter Jones", 75, 'M', 103, "Infarto", uci));
-    uci->addPatient(new Patient("Mary Williams", 55, 'F', 104, "Pós-operatório", uci));
 }

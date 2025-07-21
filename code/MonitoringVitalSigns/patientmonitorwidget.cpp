@@ -1,6 +1,7 @@
 #include "patientmonitorwidget.h"
 #include "ui_patientmonitorwidget.h"
 
+// Construtor que inicializa o widget e seus componentes de UI.
 PatientMonitorWidget::PatientMonitorWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PatientMonitorWidget)
@@ -8,20 +9,28 @@ PatientMonitorWidget::PatientMonitorWidget(QWidget *parent) :
     ui->setupUi(this);
 }
 
+// Destrutor que libera a memória da UI.
 PatientMonitorWidget::~PatientMonitorWidget()
 {
     delete ui;
 }
 
+// Define o texto do QLabel que exibe o nome do paciente.
 void PatientMonitorWidget::setPatientName(const QString& name)
 {
-    ui->labelPatientName->setText(name); // Supondo que o nome do objeto no .ui é labelPatientName
+    ui->labelPatientName->setText(name);
 }
 
-// Slot que atualiza os valores na tela
+// Este slot é chamado pelo sinal 'vitalSignUpdated' do objeto Patient.
 void PatientMonitorWidget::updateDisplay(float heartRate, float systolicPressure, float diastolicPressure, float o2sat)
 {
-    ui->lcdHeartRate->display(heartRate); // Supondo que o nome do objeto é lcdHeartRate
+    // Atualiza os visores de LCD com os novos valores.
+    ui->lcdHeartRate->display(heartRate);
     ui->lcdO2Sat->display(o2sat);
-    ui->labelPressure->setText(QString("%1 / %2").arg(systolicPressure, 0, 'f', 0).arg(diastolicPressure, 0, 'f', 0));
+
+    // Formata a string da pressão (ex: "120 / 80") e atualiza o QLabel.
+    QString pressureText = QString("%1 / %2")
+                               .arg(systolicPressure, 0, 'f', 0)
+                               .arg(diastolicPressure, 0, 'f', 0);
+    ui->labelPressure->setText(pressureText);
 }

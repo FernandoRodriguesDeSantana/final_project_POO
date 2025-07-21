@@ -1,6 +1,6 @@
 #include "mainwindow.h"
-#include "logindialog.h" // Incluir nosso novo diálogo
-#include "monitoringsystem.h" // Incluir o sistema
+#include "logindialog.h"      // Inclui a definição da janela de login
+#include "monitoringsystem.h" // Inclui a definição do sistema de gerenciamento
 
 #include <QApplication>
 
@@ -8,23 +8,25 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    // 1. Crie o sistema de monitoramento que contém os usuários
+    // 1. Cria o "backend" da aplicação, que gerencia todos os dados.
     MonitoringSystem system;
-    system.setupInitialData(); // Popula com dados de teste
+    system.setupInitialData(); // Popula o sistema com dados de teste (médicos, alas, pacientes).
 
-    // 2. Crie e exiba a janela de login
+    // 2. Cria e exibe a janela de login, passando o sistema para ela.
     LoginDialog loginDialog(&system);
-    // loginDialog.exec() abre o diálogo e para a execução aqui até que ele seja fechado
+    // O método .exec() abre a janela de forma "modal", ou seja, a execução do código
+    // para aqui e só continua quando a janela de login for fechada.
 
-    // 3. Verifique se o login foi bem-sucedido (o diálogo foi "aceito")
+    // 3. Verifica o resultado da janela de login.
     if (loginDialog.exec() == QDialog::Accepted) {
-        // Se sim, crie e mostre a janela principal
+        // Se o login foi bem-sucedido (o diálogo foi "aceito"),
+        // então cria e mostra a janela principal.
         MainWindow w;
         w.show();
-        // E inicie o loop de eventos da aplicação
+        // Inicia o loop de eventos principal da aplicação.
         return a.exec();
     } else {
-        // Se não, a aplicação simplesmente termina
+        // Se o login falhou ou foi cancelado, a aplicação encerra.
         return 0;
     }
 }
